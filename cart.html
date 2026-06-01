@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - SweetBites</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar section-content">
+            <a href="index.html" class="nav-logo">
+                <h2 class="logo-text">SweetBite's</h2>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#menu" class="nav-link">Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cart-container">
+        <div class="cart-wrapper section-content">
+            <h1 class="cart-title">Your Shopping Cart</h1>
+
+            <div class="cart-content-layout">
+                <div class="cart-items-list">
+                    <div class="cart-action-header"
+                        style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 2px solid #f5f5f5; margin-bottom: 15px;">
+                        <label
+                            style="display: flex; align-items: center; gap: 10px; font-weight: 600; color: #800000; cursor: pointer;">
+                            <input type="checkbox" id="select-all-cart" onchange="togglePilihSemua(this)"> Pilih Semua
+                        </label>
+                        <button onclick="hapusSemuaKeranjang()"
+                            style="background: none; border: none; color: #ff4d4d; cursor: pointer; font-weight: 500;">
+                            <i class="fa-solid fa-trash-can"></i> Hapus Semua
+                        </button>
+                    </div>
+
+                    <div id="cart-items-container">
+                    </div>
+                </div>
+
+                <div class="cart-summary-card">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="summary-subtotal">Rp 0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping Fee</span>
+                        <span id="summary-shipping">Rp 10.000</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total</span>
+                        <span id="summary-total">Rp 0</span>
+                    </div>
+                    <button class="btn-checkout" onclick="window.location.href='cart-order.html'">Proceed to
+                        Checkout</button>
+                    <a href="index.html#menu" class="continue-shopping">Continue Shopping</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

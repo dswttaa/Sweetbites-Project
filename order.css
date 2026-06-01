@@ -1,0 +1,174 @@
+/* --- Global Styling --- */
+body {
+    background-color: #fff0f5;
+    padding-top: 80px;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Styling */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: #800000;
+    height: 80px;
+}
+
+header .navbar {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.navbar .nav-logo .logo-text {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.navbar .nav-menu {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+
+.navbar .nav-menu .nav-link {
+    padding: 10px 18px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.navbar .nav-menu .nav-link:hover {
+    background: #ffcccc;
+    color: #800000;
+}
+
+.cart-navbar-link {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Checkout Page Styling  */
+.order-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px;
+    background: #ffffff;
+    max-width: 1000px;
+    margin: 40px auto;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(128, 0, 0, 0.05);
+    border: 1px solid #f0e6e6;
+    align-items: stretch;
+}
+
+/* Left summary */
+.summary-side {
+    flex: 1;
+    /* Porsi 50% */
+    text-align: center;
+    border-right: 1px solid #eee;
+    padding-right: 40px;
+}
+
+/* Right form */
+.form-side {
+    flex: 1;
+}
+
+.summary-side img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.summary-side h2,
+.form-side h2 {
+    color: #800000;
+    margin-bottom: 20px;
+}
+
+.price-total {
+    font-size: 2rem;
+    color: #800000;
+    font-weight: bold;
+}
+
+.back-home {
+    color: #800000;
+    font-weight: 550;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* --- Form Styling --- */
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #800000;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 10px 0;
+    font-size: 1rem;
+    outline: none;
+}
+
+.button-confirm {
+    width: 100%;
+    padding: 15px;
+    background: #800000;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button-confirm:hover {
+    background: #a00000;
+    transform: translateY(-2px);
+}
+
+
+@media (max-width: 768px) {
+    .order-wrapper {
+        flex-direction: column;
+    }
+
+    .summary-side {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-right: 0;
+        padding-bottom: 30px;
+    }
+}

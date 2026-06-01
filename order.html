@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetBite's | Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="order.css">
+
+</head>
+
+<body>
+
+
+
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="navbar section-content">
+            <a href="#" class="nav-logo">
+                <h2 class="logo-text">SweetBite's</h2>
+            </a>
+            <ul class="nav-menu">
+                <button id="menu-close-button" class="fa-solid fa-xmark"></button>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#menu" class="nav-link">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#sweet-reviews" class="nav-link">Sweet Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#best-seller" class="nav-link">Best Seller</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact us</a>
+                </li>
+                <li class="cart-wrapper">
+                    <a href="index.html#cart" class="cart-navbar-link">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="cart-badge" id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+
+            <button id="menu-open-button" class="fas fa-bars"></button>
+        </nav>
+    </header>
+
+
+    <div class="order-wrapper">
+        <div class="summary-side">
+            <a href="index.html" class="back-home">Back to Menu</a>
+            <img src="" id="product-preview" alt="Treat">
+            <h2 id="product-name" style="text-align: center; color: #800000; margin-bottom: 5px;">Nama Menu</h2>
+            <p style="color: #666;">Selected Delight</p>
+            <div class="price-total" id="product-price">Rp 0</div>
+        </div>
+
+        <div class="form-side">
+            <h2 style="text-align: center; color: #800000; margin-bottom: 20px;">Checkout Details</h2>
+            <form id="order-form">
+                <div class="input-group">
+                    <label>FULL NAME</label>
+                    <input type="text" id="buyer-name" placeholder="Your name..." required>
+                </div>
+
+                <div class="input-group">
+                    <label>SELECT MENU</label>
+                    <select id="product-select" class="input-box" onchange="updateProduct()">
+                        <option value="macaron">Strawberry Macarons - Rp 30k</option>
+                        <option value="cupcake">Blueberry Cupcake - 15k</option>
+                        <option value="cookie">Classic Cookie - 12k</option>
+                        <option value="pudding">Caramel Glazed Pudding - 11k</option>
+                        <option value="tiramisu">Soft Tiramisu Cake - 45k</option>
+                        <option value="cheesecake">Burst Cheesecake - 35k</option>
+                        <option value="icescoop">Choco Vanilla Cone - 18k</option>
+                        <option value="coffe">Hot coffe - 20k</option>
+                        <option value="matchalatte">Matcha Latte - 20k</option>
+                        <option value="aren">Aren Latte - 22k</option>
+                        <option value="matchacup">Matcha Mist - 23k</option>
+                        <option value="taro">Taro Velvet - 18k</option>
+                        <option value="oreo">Oreo Shake - 25k</option>
+                        <option value="strobericup">Strawberry Milkshake - 25k</option>
+                        <option value="chococup">Choco Lava - 15k</option>
+                        <option value="pancake">Honey Berry Pancake - 38k</option>
+                        <option value="croissant">Berry Glazed Croissant - 20k</option>
+                        <option value="toast">Raspberry Velvet Toast - 20k</option>
+                        <option value="macarons">Pastel Macaron Collection - 120k</option>
+                        <option value="cupcakes">Strawberry Cupcakes - 77k</option>
+                        <option value="donuts">Sweet Glaze Donuts - 105k</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>QUANTITY</label>
+                    <input type="number" id="product-qty" value="1" min="1" oninput="updateProduct()" required>
+                </div>
+
+                <div class="input-group">
+                    <label>ADDRESS</label>
+                    <textarea id="buyer-address" rows="2" placeholder="Where to send?" required></textarea>
+                </div>
+
+                <button type="submit" class="button-confirm">Order via WhatsApp</button>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        // COMPLETE MENU DATA
+        const menuData = {
+            'macaron': { name: 'Strawberry Macarons', priceNum: 30000, image: 'images/macaron.png' },
+            'cupcake': { name: 'Blueberry Cupcake', priceNum: 15000, image: 'images/cupcake.png' },
+            'cookie': { name: 'Classic Cookie', priceNum: 12000, image: 'images/cookies.png' },
+            'pudding': { name: 'Caramel Glazed Pudding', priceNum: 11000, image: 'images/puding.png' },
+            'tiramisu': { name: 'Soft Tiramisu Cake', priceNum: 45000, image: 'images/tiramisu.png' },
+            'cheesecake': { name: 'Burst Cheesecake', priceNum: 35000, image: 'images/cheesecake.png' },
+            'icescoop': { name: 'Choco Vanilla Cone', priceNum: 18000, image: 'images/icescoop.png' },
+            'coffe': { name: 'Hot Coffee', priceNum: 21000, image: 'images/kopi.png' },
+            'matchalatte': { name: 'Matcha Latte', priceNum: 22000, image: 'images/matcha.png' },
+            'aren': { name: 'Aren Latte', priceNum: 26000, image: 'images/kopicup.png' },
+            'matchacup': { name: 'Matcha Mist', priceNum: 27000, image: 'images/matchacup.png' },
+            'taro': { name: 'Taro Velvet', priceNum: 18000, image: 'images/taro.png' },
+            'oreo': { name: 'Oreo Shake', priceNum: 30000, image: 'images/oreacup.png' },
+            'strobericup': { name: 'Strawberry Milkshake', priceNum: 30000, image: 'images/strobeicup.png' },
+            'chococup': { name: 'Choco Lava', priceNum: 20000, image: 'images/chococup.png' },
+            'pancake': { name: 'Honey Berry Pancake', priceNum: 38000, image: 'images/piring1.png' },
+            'croissant': { name: 'Berry Glazed Croissant', priceNum: 24000, image: 'images/piring2.png' },
+            'toast': { name: 'Raspberry Velvet Toast', priceNum: 22000, image: 'images/piring3.png' },
+            'macarons': { name: 'Pastel Macaron Collection', priceNum: 120000, image: 'images/box1.png' },
+            'cupcakes': { name: 'Strawberry Cupcakes Pack', priceNum: 80000, image: 'images/box2.png' },
+            'donuts': { name: 'Sweet Glaze Donuts Pack', priceNum: 105000, image: 'images/box3.png' }
+        };
+
+        // DISPLAY UPDATE FUNCTION
+        function updateProduct() {
+            const productSelect = document.getElementById('product-select');
+            const productQty = document.getElementById('product-qty');
+            const productName = document.getElementById('product-name');
+            const productPrice = document.getElementById('product-price');
+            const previewImg = document.getElementById('product-preview');
+
+            const item = menuData[productSelect.value];
+            const qty = parseInt(productQty.value) || 1;
+
+            if (item) {
+
+                const totalHarga = item.priceNum * qty;
+
+                productName.innerText = item.name;
+                productPrice.innerText = "Rp " + totalHarga.toLocaleString('id-ID');
+                previewImg.src = item.image;
+            }
+        }
+
+        // LOGIC SEND TO WHATSAPP
+        document.getElementById('order-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('buyer-name').value;
+            const address = document.getElementById('buyer-address').value;
+            const select = document.getElementById('product-select');
+            const qty = document.getElementById('product-qty').value;
+            const item = menuData[select.value];
+
+            const total = item.priceNum * qty;
+            const text = `Pesanan Baru!%0A- Menu: ${item.name}%0A- Qty: ${qty}%0A- Total: Rp ${total.toLocaleString('id-ID')}%0A- Nama: ${name}%0A- Alamat: ${address}`;
+
+            window.open(`https://api.whatsapp.com/send?phone=6283139424004&text=${text}`, '_blank');
+        });
+
+
+        window.onload = function () {
+            const itemKey = localStorage.getItem('pilihanMenu');
+            if (itemKey && menuData[itemKey]) {
+                document.getElementById('product-select').value = itemKey;
+                updateProduct();
+                localStorage.removeItem('pilihanMenu');
+            }
+        };
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

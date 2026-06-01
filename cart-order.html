@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetBite's | Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart-order.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="navbar section-content">
+            <a href="#" class="nav-logo">
+                <h2 class="logo-text">SweetBite's</h2>
+            </a>
+            <ul class="nav-menu">
+                <button id="menu-close-button" class="fa-solid fa-xmark"></button>
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#menu" class="nav-link">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#sweet-reviews" class="nav-link">Sweet Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#best-seller" class="nav-link">Best Seller</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact us</a>
+                </li>
+                <li class="cart-wrapper">
+                    <a href="index.html#cart" class="cart-navbar-link">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="cart-badge" id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+
+            <button id="menu-open-button" class="fas fa-bars"></button>
+        </nav>
+    </header>
+
+    <!-- Left column order list -->
+    <div class="order-wrapper" style="display: flex; gap: 40px; padding: 20px; max-width: 1200px; margin: auto;">
+
+        <div class="left-col" style="flex: 1;">
+            <div style="margin-bottom: 30px; text-align:center"></div>
+            <h2 style="text-align: center; color: #800000; margin-bottom: 40px;">Your Order</h2>
+            <div id="checkout-items-list">
+
+            </div>
+
+        </div>
+
+        <!-- Right column form -->
+        <div class="form-side" style="flex: 1;">
+            <div style="margin-bottom: 40px; text-align:center"></div>
+            <h2 style="text-align: center; color: #800000; margin-bottom: 40px;">Checkout Details</h2>
+            <form id="order-form">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="buyer-name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>YOUR ORDERS</label>
+                    <div id="checkout-items-list">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="buyer-phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="input-group">
+                    <label>ADDRESS</label>
+                    <textarea id="buyer-address" rows="2" placeholder="Where to send?" required></textarea>
+                </div>
+
+                <button type="submit" class="button-confirm">Order via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function loadCartItems() {
+            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            const listContainer = document.getElementById('checkout-items-list');
+            let subtotal = 0;
+            const shipping = 10000;
+
+            // FILL IN THE ORDER LIST IN THE RIGHT COLUMN
+            listContainer.innerHTML = cart.map(item => {
+                const itemPrice = parseInt(item.price.replace(/[^0-9]/g, ''));
+                subtotal += itemPrice;
+                return `
+            <div class="cart-item" style="display:flex; align-items:center; margin-bottom:15px;">
+                <img src="${item.image}" style="width:50px; height:50px; margin-right:10px;">
+                <div>
+                    <p>${item.name}</p>
+                    <p>Quantity: x${item.qty}</p>
+                </div>
+                <span style="margin-left:auto;">${item.price}</span>
+            </div>
+        `;
+            }).join('');
+
+            // FILL IN THE SUMMARY FIGURES OF THE LEFT COLUMN
+            document.getElementById('subtotal').innerText = "Rp " + subtotal.toLocaleString('id-ID');
+            document.getElementById('final-total').innerText = "Rp " + (subtotal + shipping).toLocaleString('id-ID');
+        }
+    </script>
+
+</body>
+
+</html>

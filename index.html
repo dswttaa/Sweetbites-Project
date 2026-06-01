@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetBites Bakery</title>
+    <!-- Linking Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Linking Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="navbar section-content">
+            <a href="#" class="nav-logo">
+                <h2 class="logo-text">SweetBite's</h2>
+            </a>
+            <ul class="nav-menu">
+                <button id="menu-close-button" class="fa-solid fa-xmark"></button>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#menu" class="nav-link">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#sweet-reviews" class="nav-link">Sweet Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#best-seller" class="nav-link">Best Seller</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact us</a>
+                </li>
+                <li class="cart-wrapper">
+                    <a href="cart.html" class="cart-navbar-link">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="cart-badge" id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+
+            <button id="menu-open-button" class="fas fa-bars"></button>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- Shopping cart section -->
+        <div id="sideCartPanel" class="side-cart">
+            <div class="cart-header">
+                <h3>Shopping Cart 🛒</h3>
+                <button class="close-cart" onclick="bukaTutupKeranjang()">×</button>
+            </div>
+            <ul id="cartItemsList" class="cart-items-list">
+                <!-- List pesanan akan diisi otomatis oleh JavaScript -->
+            </ul>
+            <button class="btn-checkout-cart" onclick="prosesCheckoutMultiMenu()">Checkout Sekarang</button>
+        </div>
+        </div>
+        </section>
+
+
+        <!-- Hero section-->
+        <section class="hero-section">
+            <div class="section-content">
+                <div class="hero-details">
+                    <h2 class="title">Handcrafted Sweets</h2>
+                    <h3 class="subtitle">Savor Every Sweet Momen with Our Signature Treats!</h3>
+                    <p class="description">Nikmati sensasi kelezatan dessert premium & minuman segar yang dibuat khusus
+                        untuk mencerahkan harimu. Setiap gigitan adalah kebahagiaan.</p>
+
+                    <div class="buttons">
+                        <a href="#menu" class="button order-now">Order Now</a>
+                        <a href="#contact" class="button Contact-us">Contact Us</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="images/macaron.png" alt="hero" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section class="about-section" id="about">
+            <div class="section-content">
+                <div class="about-image-wrapper">
+                    <img src="images/about.jpeg" alt="about" class="about-image">
+                </div>
+                <div class="about-details">
+                    <h2 class="section-title">About Us</h2>
+                    <p class="text">SweetBite's adalah penyedia dessert dan minuman artisan yang berbasis pada kualitas
+                        dan inovasi. kami spesialis dalam pembuatan aneka donat, pastry premium, serta minuman segar
+                        yang dibuat secara higienis setiap harinya. Fokus utama dari kami adalah memberikan konsistensi
+                        rasa dan pelayanan terbaik bagi komunitas pecinta kuliner yang mencari kualitas tanpa kompromi.
+                    </p>
+                    <div class="social-link-list">
+                        <a href="#" class="social-link-list"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link-list"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link-list"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu section -->
+        <section class="menu-section" id="menu">
+            <h2 class="section-title">Our Menu</h2>
+            <div class="section-content">
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/macaron.png" alt="macaron" class="menu-image">
+                            <h3 class="name">Strawberry Macarons</h3>
+                            <span class="price">Rp 30.000</span>
+                            <p class="text">Kue mungil khas prancis dengan rasa stroberi yang autentik.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Strawberry Macarons', 30000)">+ Add</button>
+
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'macaron')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/cupcake.png" alt="cupcake" class="menu-image">
+                            <h3 class="name">Blueberry Cupcake</h3>
+                            <span class="price">Rp 15.000</span>
+                            <p class="text">Cupcake lembut dengan topping buah beri biru yang manis.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Blueberry Cupcake', 15000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'cupcake')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/cookies.png" alt="Cookiez" class="menu-image">
+                            <h3 class="name">Classic Cookie</h3>
+                            <span class="price">Rp 12.000</span>
+                            <p class="text">Kue kering manis favorit dengan butiran coklat asli.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Classic Cookie', 12000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'cookie')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/puding.png" alt="puding" class="menu-image">
+                            <h3 class="name">Caramel Glazed Pudding</h3>
+                            <span class="price">Rp 11.000</span>
+                            <p class="text">Puding sutra lembut dengan siraman saus karamel.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Caramel Glazed Pudding', 11000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'pudding')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/tiramisu.png" alt="tiramisu cake" class="menu-image">
+                            <h3 class="name">Soft Tiramisu Cake</h3>
+                            <span class="price">Rp 45.000</span>
+                            <p class="text">Perpaduan biskuit kopi dan krim mascarpone premium.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Soft Tiramisu Cake', 45000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'tiramisu')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/cheesecake.png" alt="cheesecake" class="menu-image">
+                            <h3 class="name">Burst Cheesecake</h3>
+                            <span class="price">Rp 35.000</span>
+                            <p class="text">Cheesecake creamy dengan saus berry merah melimpah.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Burst Cheesecake', 35000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'cheesecake')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/icescoop.png" alt="Choco Vanilla Cone" class="menu-image">
+                            <h3 class="name">Choco Vanilla Cone</h3>
+                            <span class="price">Rp 18.000</span>
+                            <p class="text">Es krim vanilla Coklat lembut dengan cone yang renyah.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Choco Vanilla Cone', 18000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'icescoop')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/kopi.png" alt="Hot Coffee" class="menu-image">
+                            <h3 class="name">Hot Coffee</h3>
+                            <span class="price">Rp 21.000</span>
+                            <p class="text">Kopi hitam hangat untuk teman nugas yang tenang.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Hot Coffee', 21000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'coffe')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/matcha.png" alt="Matcha" class="menu-image">
+                            <h3 class="name">Matcha Latte</h3>
+                            <span class="price">Rp 22.000</span>
+                            <span class="price" style="display: none;">Rp 20.000</span>
+                            <p class="text">Teh Hijau Jepang yang berpadu sempurna dengan susu yang creamy.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Matcha Latte', 22000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'matchalatte')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/kopicup.png" alt="kopi gula aren" class="menu-image">
+                            <h3 class="name">Aren Latte</h3>
+                            <span class="price">Rp 26.000</span>
+                            <span class="price" style="display: none;">Rp 22.000</span>
+                            <p class="text">Kopi susu gula aren klasik yang bikin melek.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Aren Latte', 26000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'aren')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/matchacup.png" alt="matcha" class="menu-image">
+                            <h3 class="name">Matcha Mist</h3>
+                            <span class="price">Rp 27.000</span>
+                            <span class="price" style="display: none;">Rp 23.000</span>
+                            <p class="text">Teh hijau Jepang yang segar berpadu dengan susu.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Matcha Mist', 27000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'matchacup')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/taro.png" alt="taro" class="menu-image">
+                            <h3 class="name">Taro Velvet</h3>
+                            <span class="price">Rp 18.000</span>
+                            <p class="text">Susu taro ungu dengan rasa yang lembut dan unik.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Taro Velvet', 18000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'taro')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/oreacup.png" alt="Oreo Shake" class="menu-image">
+                            <h3 class="name">Oreo Shake</h3>
+                            <span class="price">Rp 30.000</span>
+                            <span class="price" style="display: none;">Rp 25.000</span>
+                            <p class="text">Susu Vanilla dengan taburan biskuit Oreo renyah.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Oreo Shake', 30000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'oreo')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/strobeicup.png" alt="Strawberry Milkshake" class="menu-image">
+                            <h3 class="name">Strawberry Milkshake</h3>
+                            <span class="price">Rp 30.000</span>
+                            <span class="price" style="display: none;">Rp 25.000</span>
+                            <p class="text">Perpaduan susu stroberi segar yang lembut dan creamy</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Strawberry Milkshake', 30000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'strobericup')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/chococup.png" alt="Choco Lava" class="menu-image">
+                            <h3 class="name">Choco Lava</h3>
+                            <span class="price">Rp 20.000</span>
+                            <span class="price" style="display: none;">Rp 15.000</span>
+                            <p class="text">Minuman Cokelat Kental yang manis dan creamy</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Choco Lava', 20000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'chococup')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/piring1.png" alt="pancake" class="menu-image">
+                            <h3 class="name">Honey Berry Pancake</h3>
+                            <span class="price">Rp 38.000</span>
+                            <p class="text">Pancake empuk dengan siraman madu dan stroberi.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Honey Berry Pancake', 38000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'pancake')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/piring2.png" alt="croissant" class="menu-image">
+                            <h3 class="name">Berry Glazed Croissant</h3>
+                            <span class="price">Rp 24.000</span>
+                            <span class="price" style="display: none;">Rp 20.000</span>
+                            <p class="text">Pastry renyah dengan topping berry yang segar.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Berry Glazed Croissant', 24000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'croissant')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/piring3.png" alt="toast" class="menu-image">
+                            <h3 class="name">Raspberry Velvet Toast</h3>
+                            <span class="price">Rp 22.000</span>
+                            <span class="price" style="display: none;">Rp 20.000</span>
+                            <p class="text">Roti panggang lembut dengan krim vanila dan Raspberry.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Raspberry Velvet Toast', 22000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'toast')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/box1.png" alt="macaron" class="menu-image">
+                            <h3 class="name">Pastel Macaron Collection</h3>
+                            <span class="price">Rp 120.000</span>
+                            <p class="text">Kotak hantaran mewah berisi macaron autentik.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Pastel Macaron Collection', 120000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'macarons')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/box2.png" alt="cupcakes" class="menu-image">
+                            <h3 class="name">Strawberry Cupcakes Pack</h3>
+                            <span class="price">Rp 80.000</span>
+                            <span class="price" style="display: none;">Rp 77.000</span>
+                            <p class="text">Box Cupcake vanila dengan frosting krim melimpah dan buah stroberi utuh
+                                diatasnya.</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Strawberry Cupcakes Pack', 80000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'cupcakes')">Order Now</a>
+                        </div>
+                    </li>
+
+                    <li class="menu-item">
+                        <div class="menu-card-link">
+                            <img src="images/box3.png" alt="donat" class="menu-image">
+                            <h3 class="name">Sweet Glaze Donuts Pack</h3>
+                            <span class="price">Rp 105.000</span>
+                            <p class="text">Koleksi donat warna-warni dengan berbagai glaze</p>
+                        </div>
+                        <div class="button-group">
+                            <button onclick="tambahKeKeranjang('Sweet Glaze Donuts Pack', 105000)">+ Add</button>
+                            <a href="order.html" class="order-button"
+                                onclick="localStorage.setItem('pilihanMenu', 'donuts')">Order Now</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!-- Sweet reviews section-->
+        <section class="sweet-reviews-section" id="sweet-reviews">
+            <h2 class="section-title">Sweet Reviews</h2>
+            <div class="section-content">
+                <div class="slider-container swiper">
+                    <div class="slider-wrapper">
+                        <ul class="sweet-reviews-list swiper-wrapper">
+                            <li class="sweet-reviews swiper-slide">
+                                <img src="images/user1.jpeg" alt="User" class="user-image">
+                                <h3 class="name">@alsaa__</h3>
+                                <i class="feeedback">Oreo Shake nya enak dan beneran creamy. pelayanannya juga ramah
+                                    bangett</i>
+                            </li>
+                            <li class="sweet-reviews swiper-slide">
+                                <img src="images/user2.jpeg" alt="User" class="user-image">
+                                <h3 class="name">@diana_agstin</h3>
+                                <i class="feeedback">Cupcakenya lucu,sayang buat dimakan! Rasanya enak juga gak terlalu
+                                    maniss.</i>
+                            </li>
+                            <li class="sweet-reviews swiper-slide">
+                                <img src="images/user7.jpeg" alt="User" class="user-image">
+                                <h3 class="name">@nndiraaa</h3>
+                                <i class="feeedback">Berry Croissant-nya bikin nagih! Renyah diluar, lembut di
+                                    dalem!</i>
+                            </li>
+                            <li class="sweet-reviews swiper-slide">
+                                <img src="images/user4.jpeg" alt="User" class="user-image">
+                                <h3 class="name">@dswttaa</h3>
+                                <i class="feeedback">Gak pernah bosen jajan disini. Semua kuenya fresh dan fotogenik
+                                    buat di-post.</i>
+                            </li>
+                            <li class="sweet-reviews swiper-slide">
+                                <img src="images/user5.jpeg" alt="User" class="user-image">
+                                <h3 class="name">@msnaka</h3>
+                                <i class="feeedback">Kopi arennya juara, pas buat nemenin nugas semalaman. mantapp!</i>
+                            </li>
+                        </ul>
+
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-slide-button swiper-button-prev"></div>
+                        <div class="swiper-slide-button swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best seller section -->
+        <section class="best-seller-section" id="best-seller">
+            <h2 class="section-title">Best seller</h2>
+            <div class="section-content">
+                <ul class="best-seller-list">
+                    <li class="best-seller-item">
+                        <img src="images/best1.jpeg" alt="Best seller" class="best-seller-image">
+                    </li>
+                    <li class="best-seller-item">
+                        <img src="images/best2.jpeg" alt="Best seller" class="best-seller-image">
+                    </li>
+                    <li class="best-seller-item">
+                        <img src="images/best3.jpeg" alt="Best seller" class="best-seller-image">
+                    </li>
+                    <li class="best-seller-item">
+                        <img src="images/best4.jpeg" alt="Best seller" class="best-seller-image">
+                    </li>
+                    <li class="best-seller-item">
+                        <img src="images/best5.jpeg" alt="Best seller" class="best-seller-image">
+                    </li>
+                    <li class="best-seller-item">
+                        <img src="images/best6.jpeg" alt="Best seller" class="best-seller-image">
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact us section -->
+        <section class="contact-section" id="contact">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="section-content">
+                <ul class="contact-info-list">
+                    <li class="contact-info">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        <p>Jl.Raya Tajur, Biotrop No.123, Kota Bogor, Jawa Barat</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-regular fa-envelope"></i>
+                        <p>Info@sweetbiteswebsite.com</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>(+62) 831-39424004</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>Monday - Friday: 8:00 AM - 7:00 PM</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>Saturday: 10:00 AM - 4:00 PM</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-regular fa-clock"></i>
+                        <p>Sunday: Closed</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-solid fa-globe"></i>
+                        <p>www.sweetbitesweb.com</www>
+                        </p>
+                    </li>
+                </ul>
+
+                <form action="#" class="contact-form">
+                    <input type="text" placeholder="Your name" class="form-input" required>
+                    <input type="email" placeholder="Your email" class="form-input" required>
+                    <textarea placeholder="Your massage" class="form-input" required></textarea>
+                    <button class="submit-button">Submit</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer section -->
+        <footer class="footer-section">
+            <div class="section-content">
+                <p class="copyright-text">copyright 2026 SweetBites Bakery</p>
+
+                <div class="social-link-list">
+                    <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+
+                <p class="policy-text">
+                    <a href="privacy.html" class="policy-link">Privacy policy</a>
+                    <span class="separator">|</span>
+                    <a href="refund.html" class="policy-link">Refund policy</a>
+                </p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Linking Swiper script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Linking custom script -->
+    <script src="script.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+/* Cart container and layout */
+.cart-container {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    background: var(--light-pink-color);
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+}
+
+.cart-title {
+    font-size: var(--font-size-xl);
+    color: var(--dark-color);
+    margin-bottom: 30px;
+}
+
+.cart-content-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.cart-action-header {
+    background: white;
+    padding: 15px 20px;
+    border-radius: var(--border-radius-s);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.cart-action-header label {
+    transition: 0.2s;
+}
+
+.cart-action-header label:hover {
+    color: var(--dark-color) !important;
+}
+
+.cart-action-header button:hover {
+    color: #cc0000 !important;
+    opacity: 0.9;
+}
+
+/* Cat item list styling*/
+.cart-items-list {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius-s);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.cart-item-card img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-right: 20px;
+}
+
+/* Product text details styling */
+.item-details {
+    flex: 1;
+}
+
+.item-details h3 {
+    font-size: 18px;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.item-details .item-price {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Number and action buttons */
+
+.item-quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-right: 30px;
+}
+
+.item-quantity-controls button {
+    background: var(--light-pink-color);
+    border: 1px solid #ffccd5;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.item-quantity-controls button:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-remove-item {
+    color: #ff4d4d;
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+.btn-remove-item:hover {
+    transform: scale(1.1);
+    color: #cc0000;
+}
+
+/* Order summary styling*/
+.cart-summary-card {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius-s);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cart-summary-card h3 {
+    font-size: 18px;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--medium-gray-color);
+    padding-bottom: 10px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.total-row {
+    border-top: 1px dashed var(--medium-gray-color);
+    padding-top: 15px;
+    font-weight: var(--font-weight-bold);
+    color: var(--dark-color);
+    font-size: 18px;
+}
+
+/* Checkout buttons styling*/
+.btn-checkout {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-m);
+    font-size: 16px;
+    font-weight: var(--font-weight-semibold);
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-checkout:hover {
+    background: #590000;
+    transform: translateY(-2px);
+}
+
+.continue-shopping {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+}
+
+.continue-shopping:hover {
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width: 900px) {
+    .cart-content-layout {
+        flex-direction: column;
+    }
+
+    .cart-summary-card {
+        width: 100%;
+    }
+
+    .cart-item-card {
+        position: relative;
+        padding-bottom: 60px;
+    }
+
+    .item-quantity-controls {
+        position: absolute;
+        bottom: 15px;
+        left: 20px;
+    }
+
+    .btn-remove-item {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+    }
+}
